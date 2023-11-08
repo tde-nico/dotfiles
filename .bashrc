@@ -140,6 +140,18 @@ alias "www"="python3 -m http.server 8000 --directory"
 # Pwn
 alias "pwninit"="/opt/pwninit --template-path ~/.config/pwninit-template.py"
 alias "pwn"="sudo docker run -it --rm -v \"\`pwd\`:/chal\" pwner /bin/bash"
+alias "sqlmap"="python3 /opt/sqlmap-dev/sqlmap.py"
+alias "responder"="sudo python3 /opt/Responder-3.1.3.0/Responder.py"
+alias "procyon-decompiler"="java -jar /opt/procyon-decompiler.jar"
+alias "openvpn"="sudo openvpn"
+alias "ida32"="/mnt/c/Python/Programs/IDA\ 7.5/ida.exe"
+alias "ida64"="/mnt/c/Python/Programs/IDA\ 7.5/ida64.exe"
+alias "ida64f"="/mnt/c/Program\ Files/IDA\ Freeware\ 8.3/ida64.exe"
+
+
+# Go
+alias "gb"="go build"
+alias "gmi"="go mod init"
 
 # Sh
 alias "c"="clear"
@@ -151,9 +163,11 @@ alias "now"='date +"%T"'
 # Bash
 alias "desk"="cd /mnt/c/Users/tommy/Desktop"
 alias "dpy"="cd /mnt/c/Python"
+alias "docks"="cd /mnt/c/Python/docks"
 alias "upgrade"="sudo apt-get update && sudo apt-get upgrade -y"
 alias "2u"="find . -type f -print0 | xargs -0 dos2unix --"
 alias "g"="gcc -Werror -Wextra -Wall"
+alias "dock"="sudo docker run -it --rm -v \"\`pwd\`:/chal\" --entrypoint /bin/bash"
 
 
 ###   PROMPT   ###
@@ -166,8 +180,21 @@ EXITSTATUS="\`if [ \$? = 0 ]; then echo '${GREEN}'; else echo '${RED}'; fi\`"
 
 export PS1="${EXITSTATUS}\u${END}:${BLUE}\w${END}$ "
 
+
 export PATH="$PATH:/usr/local/x86_64elfgcc/bin"
 export PATH="$PATH:/opt"
+export PATH=$PATH:/usr/local/go/bin
+export PATH="/home/kali/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+export MODULAR_HOME="/home/kali/.modular"
+export GOPATH="/opt"
+
+libpath=$(python3 -c 'import sysconfig; print(sysconfig.get_config_var("LIBDIR"))')
+pythonlib=$(ls $libpath | grep "libpython3.*[0-9]\.so$")
+export MOJO_PYTHON_LIBRARY=${libpath}/${pythonlib}
+
+
+export DISPLAY=172.31.192.1:0.0
+
 
 if [ "$PWD" = "$HOME" ]; then
   if [ -z "$TMUX" ]; then
