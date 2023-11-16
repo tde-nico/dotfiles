@@ -14,7 +14,7 @@ M.general = {
 
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
+-- local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -32,6 +32,8 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
+keymap("n", "<C-Up>", "yyP", opts)
+keymap("n", "<C-Down>", "yyp", opts)
 
 keymap("n", "<A-Up>", ":m-2\n", opts)
 keymap("n", "<A-Down>", ":m+1\n", opts)
