@@ -1,0 +1,43 @@
+# Bash
+alias ".."="cd .."
+alias "c"="clear"
+alias "ll"="ls -alF"
+alias "ls"="ls --color=auto"
+alias "grep"="grep --color=auto"
+alias "upgrade"="apt-get update && apt-get upgrade -y"
+alias "update"="apt-get update"
+alias "install"="apt-get install -y"
+
+# Git
+alias "gcl"="git clone"
+alias "add"="git add"
+alias "stat"="git status"
+alias "gc"="git commit -m"
+alias "glog"="git log"
+alias "pull"="git pull"
+alias "push"="git push"
+
+# Make
+alias "m"="make"
+alias "r"="make run"
+
+# Python
+alias "python"="python3"
+alias "py"="python3"
+
+# Go
+alias "gb"="go build"
+alias "gmi"="go mod init"
+alias "gmt"="go mod tidy"
+
+# Display
+export DISPLAY='172.29.48.1:0.0'
+
+###   PROMPT   ###
+BLUE="\[\033[1;34m\]"
+GREEN="\[\033[1;32m\]"
+RED="\[\033[31m\]"
+END="\[\033[00m\]"
+
+EXITSTATUS="\`if [ \$? = 0 ]; then echo '${GREEN}'; else echo '${RED}'; fi\`"
+export PS1="${EXITSTATUS}\u${END}:${BLUE}\w${END}$ "

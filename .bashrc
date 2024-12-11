@@ -116,6 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+[ -f "/home/kali/.ghcup/env" ] && source "/home/kali/.ghcup/env" # ghcup-env
+
 
 ###   ALIAS   ###
 
@@ -133,6 +135,15 @@ alias "m"="make"
 alias "r"="make run"
 alias "rr"="make rrun"
 
+# Docker
+alias "up"="docker compose up"
+alias "upd"="docker compose up -d"
+alias "upb"="docker compose up -d --build"
+alias "down"="docker compose down"
+alias "patch"="down && upb"
+alias "dock"="docker run -it --rm -v ~/.config/bashrc:/root/.bashrc -v ~/.config/bashrc:/home/.bashrc -v \"\`pwd\`:/home\" -w /home --entrypoint /bin/bash"
+alias "dock-sh"="docker run -it --rm -v \"\`pwd\`:/home\" -w /home --entrypoint /bin/sh"
+
 # Python
 alias "py"="python3"
 alias "www"="python3 -m http.server 8000 --directory"
@@ -140,34 +151,82 @@ alias "www"="python3 -m http.server 8000 --directory"
 # Pwn
 alias "pwninit"="/opt/pwninit --template-path ~/.config/pwninit-template.py"
 alias "pwn"="sudo docker run -it --rm -v \"\`pwd\`:/chal\" pwner /bin/bash"
-alias "sqlmap"="python3 /opt/sqlmap-dev/sqlmap.py"
-alias "responder"="sudo python3 /opt/Responder-3.1.3.0/Responder.py"
+# alias "sqlmap"="python3 /opt/sqlmap-dev/sqlmap.py"
+# alias "responder"="sudo python3 /opt/Responder-3.1.3.0/Responder.py"
+alias "java-dec"="java -jar /opt/procyon-decompiler.jar"
 alias "procyon-decompiler"="java -jar /opt/procyon-decompiler.jar"
+alias "jd-gui"="java -jar /opt/jd-gui.jar"
+alias "uber-apk-signer"="java -jar /opt/uber-apk-signer-1.3.0.jar"
 alias "openvpn"="sudo openvpn"
-alias "ida32"="/mnt/c/Python/Programs/IDA\ 7.5/ida.exe"
-alias "ida64"="/mnt/c/Python/Programs/IDA\ 7.5/ida64.exe"
-alias "ida64f"="/mnt/c/Program\ Files/IDA\ Freeware\ 8.3/ida64.exe"
-
+alias "jadx"="/mnt/c/Programming/Programs/jadx-gui-1.5.1-win/jadx-gui-1.5.1.exe"
+dnspy() { "/mnt/c/Programming/Programs/dnSpy-net-win64/dnSpy.exe" $@ & }
+dnSpy() { "/mnt/c/Programming/Programs/dnSpy-net-win64/dnSpy.exe" $@ & }
+ida7-32() { "/mnt/c/Python/Programs/IDA_7.5/ida.exe" $@ & }
+ida7-64() { "/mnt/c/Python/Programs/IDA_7.5/ida64.exe" $@ & }
+ida8-32() { "/mnt/c/Python/Programs/IDA_8.3/ida.exe" $@ & }
+ida8-64() { "/mnt/c/Python/Programs/IDA_8.3/ida64.exe" $@ & }
+idaf() { "/mnt/c/Program\ Files/IDA\ Freeware\ 8.4/ida64.exe" $@ & }
+ida () { "/mnt/c/Programmi/IDA Professional 9.0/ida64.exe" "$@" & }
+alias "ida-server"="/mnt/c/Programmi/IDA\ Professional\ 9.0/dbgsrv/linux_server"
+alias "ida-s"="/mnt/c/Programmi/IDA\ Professional\ 9.0/dbgsrv/linux_server"
+alias "ida-server64"="/mnt/c/Programmi/IDA\ Professional\ 9.0/dbgsrv/linux_server64"
+alias "ida-s64"="/mnt/c/Programmi/IDA\ Professional\ 9.0/dbgsrv/linux_server64"
 
 # Go
 alias "gb"="go build"
 alias "gmi"="go mod init"
+alias "gmt"="go mod tidy"
 
 # Sh
 alias "c"="clear"
-alias "vim"="nvim"
 alias ".."="cd .."
-alias "now"='date +"%T"'
 
+# Dir
+alias "desk"="cd /mnt/c/Users/tommy/Desktop"
+# alias "do"="cd /mnt/c/Users/tommy/Downloads"
+alias "dpy"="cd /mnt/c/Programming"
+alias "docks"="cd /mnt/c/Python/docks"
 
 # Bash
-alias "desk"="cd /mnt/c/Users/tommy/Desktop"
-alias "dpy"="cd /mnt/c/Python"
-alias "docks"="cd /mnt/c/Python/docks"
 alias "upgrade"="sudo apt-get update && sudo apt-get upgrade -y"
 alias "2u"="find . -type f -print0 | xargs -0 dos2unix --"
 alias "g"="gcc -Werror -Wextra -Wall"
-alias "dock"="sudo docker run -it --rm -v \"\`pwd\`:/chal\" --entrypoint /bin/bash"
+
+# DIAG
+export DIAG="cyberchallenge.diag.uniroma1.it"
+alias "sshcc"="ssh cc@${DIAG} -p 5070"
+
+
+###   EXPORTS   ###
+
+# Opt
+export PATH="$PATH:/opt"
+
+# Go
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/opt/bin
+export GOPATH="/opt"
+
+# Mojo
+# export PATH="$PATH:/home/kali/.modular/pkg/packages.modular.com_mojo/bin"
+# export MODULAR_HOME="/home/kali/.modular"
+# libpath=$(python3 -c 'import sysconfig; print(sysconfig.get_config_var("LIBDIR"))')
+# pythonlib=$(ls $libpath | grep "libpython3.*[0-9]\.so$")
+# export MOJO_PYTHON_LIBRARY=${libpath}/${pythonlib}
+
+# Cuda
+# export CUDA_PATH="/usr/local/cuda-12.3/bin"
+# export LD_LIBRARY_PATH="/mnt/c/Windows/System32/lxss/lib:/usr/local/cuda/lib64:/usr/local/cuda/lib64/stubs:/usr/lib/x86_64-linux-gnu"
+# export PATH="$PATH:$CUDA_PATH"
+
+# Rust
+# . "$HOME/.cargo/env"
+
+# Cross Compilers
+# export PATH="$PATH:/usr/local/x86_64elfgcc/bin"
+
+# Display
+export DISPLAY='172.29.48.1:0.0'
 
 
 ###   PROMPT   ###
@@ -177,32 +236,20 @@ RED="\[\033[31m\]"
 END="\[\033[00m\]"
 
 EXITSTATUS="\`if [ \$? = 0 ]; then echo '${GREEN}'; else echo '${RED}'; fi\`"
-
 export PS1="${EXITSTATUS}\u${END}:${BLUE}\w${END}$ "
 
 
-export PATH="$PATH:/usr/local/x86_64elfgcc/bin"
-export PATH="$PATH:/opt"
-export PATH=$PATH:/usr/local/go/bin
-export PATH="/home/kali/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
-export MODULAR_HOME="/home/kali/.modular"
-export GOPATH="/opt"
+tabs 4
 
-libpath=$(python3 -c 'import sysconfig; print(sysconfig.get_config_var("LIBDIR"))')
-pythonlib=$(ls $libpath | grep "libpython3.*[0-9]\.so$")
-export MOJO_PYTHON_LIBRARY=${libpath}/${pythonlib}
-
-
-export DISPLAY=172.31.192.1:0.0
-
-
+# Init Tmux
 if [ "$PWD" = "$HOME" ]; then
   if [ -z "$TMUX" ]; then
     tmux
   else
     desk
     c
+    eval "$(/home/kali/.local/bin/zoxide init bash --cmd cd)"
   fi
+else
+  eval "$(/home/kali/.local/bin/zoxide init bash --cmd cd)"
 fi
-
-
