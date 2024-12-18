@@ -1,5 +1,6 @@
 ### PATH ###
 
+export PATH="/c/Users/tommy/AppData/Local/Programs/Python/Python38:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/bin/x86:$PATH"
 
@@ -24,28 +25,28 @@ alias "rr"="nmake rrun"
 # Python
 alias "py"="python"
 alias "www"="python -m http.server 8000 --directory"
+export PYTHONUNBUFFERED=1
 
 # Go
 alias "gmi"="go mod init"
 alias "gb"="go build"
 
-# Sh
+# Bash
 alias "c"="clear"
 alias "v"="vim"
 alias ".."="cd .."
 alias "now"='date +"%T"'
 alias "clp"="clip.exe"
 alias "clip"="clip.exe"
+alias "desk"="cd /c/Users/tommy/Desktop"
+alias "dpy"="cd /c/Programming"
+alias "nc"="ncat"
 
+# Web
 alias "w"="tsc -w"
-alias "serve"="npm run serve"
+alias "rserve"="npm run serve"
 alias "dev"="npm run start:dev"
 
-# Bash
-alias "desk"="cd /c/Users/tommy/Desktop"
-alias "dpy"="cd /c/Python"
-alias "upgrade"="sudo apt-get update && sudo apt-get upgrade"
-alias "2u"="find . -type f -print0 | xargs -0 dos2unix --"
 
 
 ###   PROMPT   ###
