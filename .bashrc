@@ -166,7 +166,7 @@ ida7-64() { "/mnt/c/Python/Programs/IDA_7.5/ida64.exe" $@ & }
 ida8-32() { "/mnt/c/Python/Programs/IDA_8.3/ida.exe" $@ & }
 ida8-64() { "/mnt/c/Python/Programs/IDA_8.3/ida64.exe" $@ & }
 idaf() { "/mnt/c/Program\ Files/IDA\ Freeware\ 8.4/ida64.exe" $@ & }
-ida () { "/mnt/c/Programmi/IDA Professional 9.0/ida64.exe" "$@" & }
+ida() { "/mnt/c/Programmi/IDA Professional 9.0/ida64.exe" "$@" & }
 alias "ida-server"="/mnt/c/Programmi/IDA\ Professional\ 9.0/dbgsrv/linux_server"
 alias "ida-s"="/mnt/c/Programmi/IDA\ Professional\ 9.0/dbgsrv/linux_server"
 alias "ida-server64"="/mnt/c/Programmi/IDA\ Professional\ 9.0/dbgsrv/linux_server64"
@@ -215,12 +215,12 @@ export GOPATH="/opt"
 # export MOJO_PYTHON_LIBRARY=${libpath}/${pythonlib}
 
 # Cuda
-# export CUDA_PATH="/usr/local/cuda-12.3/bin"
-# export LD_LIBRARY_PATH="/mnt/c/Windows/System32/lxss/lib:/usr/local/cuda/lib64:/usr/local/cuda/lib64/stubs:/usr/lib/x86_64-linux-gnu"
-# export PATH="$PATH:$CUDA_PATH"
+export CUDA_PATH="/usr/local/cuda-12.6/bin"
+export LD_LIBRARY_PATH="/mnt/c/Windows/System32/lxss/lib:/usr/local/cuda/lib64:/usr/local/cuda/lib64/stubs:/usr/lib/x86_64-linux-gnu"
+export PATH="$PATH:$CUDA_PATH"
 
 # Rust
-# . "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 
 # Cross Compilers
 # export PATH="$PATH:/usr/local/x86_64elfgcc/bin"
@@ -242,14 +242,12 @@ export PS1="${EXITSTATUS}\u${END}:${BLUE}\w${END}$ "
 tabs 4
 
 # Init Tmux
-if [ "$PWD" = "$HOME" ]; then
-  if [ -z "$TMUX" ]; then
-    tmux
-  else
+if [ -z "$TMUX" ]; then
+  tmux
+else
+  if [ "$PWD" = "$HOME" ]; then
     desk
     c
-    eval "$(/home/kali/.local/bin/zoxide init bash --cmd cd)"
   fi
-else
   eval "$(/home/kali/.local/bin/zoxide init bash --cmd cd)"
 fi
