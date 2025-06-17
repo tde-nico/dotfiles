@@ -148,19 +148,22 @@ alias "dock-sh"="docker run -it --rm -v \"\`pwd\`:/home\" -w /home --entrypoint 
 alias "py"="python3"
 alias "www"="python3 -m http.server 8000 --directory"
 
-# Pwn
+# CTF
+alias "perf"="/opt/perf"
+alias "perf-stat"="perf stat -e instructions:u"
+alias "callgrind"="valgrind --tool=callgrind"
 alias "pwninit"="/opt/pwninit --template-path ~/.config/pwninit-template.py"
-alias "pwn"="sudo docker run -it --rm -v \"\`pwd\`:/chal\" pwner /bin/bash"
 # alias "sqlmap"="python3 /opt/sqlmap-dev/sqlmap.py"
 # alias "responder"="sudo python3 /opt/Responder-3.1.3.0/Responder.py"
 alias "java-dec"="java -jar /opt/procyon-decompiler.jar"
 alias "procyon-decompiler"="java -jar /opt/procyon-decompiler.jar"
 alias "jd-gui"="java -jar /opt/jd-gui.jar"
 alias "uber-apk-signer"="java -jar /opt/uber-apk-signer-1.3.0.jar"
+alias "pyextractor"="py /opt/pyinstxtractor/pyinstxtractor.py"
+alias "pyext"="pyextractor"
 alias "openvpn"="sudo openvpn"
 alias "jadx"="/mnt/c/Programming/Programs/jadx-gui-1.5.1-win/jadx-gui-1.5.1.exe"
 dnspy() { "/mnt/c/Programming/Programs/dnSpy-net-win64/dnSpy.exe" $@ & }
-dnSpy() { "/mnt/c/Programming/Programs/dnSpy-net-win64/dnSpy.exe" $@ & }
 ida7-32() { "/mnt/c/Python/Programs/IDA_7.5/ida.exe" $@ & }
 ida7-64() { "/mnt/c/Python/Programs/IDA_7.5/ida64.exe" $@ & }
 ida8-32() { "/mnt/c/Python/Programs/IDA_8.3/ida.exe" $@ & }
@@ -191,6 +194,7 @@ alias "docks"="cd /mnt/c/Python/docks"
 alias "upgrade"="sudo apt-get update && sudo apt-get upgrade -y"
 alias "2u"="find . -type f -print0 | xargs -0 dos2unix --"
 alias "g"="gcc -Werror -Wextra -Wall"
+alias "g+"="g++ -Werror -Wextra -Wall"
 
 # DIAG
 export DIAG="cyberchallenge.diag.uniroma1.it"
